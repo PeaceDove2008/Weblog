@@ -1,0 +1,136 @@
+/* utils */
+white(a)
+  rgba(255, 255, 255, a)
+
+black(a)
+  rgba(0, 0, 0, a)
+
+rainbow-light = linear-gradient(to right, oklch(0.80 0.10 0), oklch(0.80 0.10 30), oklch(0.80 0.10 60), oklch(0.80 0.10 90), oklch(0.80 0.10 120), oklch(0.80 0.10 150), oklch(0.80 0.10 180), oklch(0.80 0.10 210), oklch(0.80 0.10 240), oklch(0.80 0.10 270), oklch(0.80 0.10 300), oklch(0.80 0.10 330), oklch(0.80 0.10 360))
+rainbow-dark = linear-gradient(to right, oklch(0.70 0.10 0), oklch(0.70 0.10 30), oklch(0.70 0.10 60), oklch(0.70 0.10 90), oklch(0.70 0.10 120), oklch(0.70 0.10 150), oklch(0.70 0.10 180), oklch(0.70 0.10 210), oklch(0.70 0.10 240), oklch(0.70 0.10 270), oklch(0.70 0.10 300), oklch(0.70 0.10 330), oklch(0.70 0.10 360))
+
+:root
+  --radius-large 0.375rem
+  --content-delay 150ms
+
+/* Cute Brutalism sticker palette: fixed candy colors, independent of the hue */
+sticker-green = oklch(0.82 0.14 150)
+sticker-yellow = oklch(0.86 0.16 85)
+sticker-orange = oklch(0.83 0.15 55)
+sticker-pink = oklch(0.82 0.14 350)
+sticker-purple = oklch(0.78 0.13 290)
+sticker-blue = oklch(0.80 0.13 230)
+sticker-teal = oklch(0.80 0.12 190)
+sticker-red = oklch(0.80 0.16 25)
+
+/* An util to define variables that vary with light and dark mode */
+define(vars)
+  :root
+    for key, value in vars
+      {key}: value[0]
+  :root.dark
+    for key, value in vars
+      if length(value) > 1
+        {key}: value[1]
+
+define({
+  /* --- Cute Brutalism ---
+     NOTE: never write `oklch(... / alpha)` directly here — stylus treats `/`
+     as division and the whole file fails to compile. Use e('...') instead. */
+  --brutal-border: oklch(0.15 0 0) oklch(0.92 0.03 var(--hue))
+  --brutal-shadow: oklch(0.15 0 0) oklch(0.95 0.03 var(--hue))
+
+  --sticker-green: sticker-green oklch(0.80 0.13 150)
+  --sticker-yellow: sticker-yellow oklch(0.84 0.14 85)
+  --sticker-orange: sticker-orange oklch(0.81 0.13 55)
+  --sticker-pink: sticker-pink oklch(0.80 0.12 350)
+  --sticker-purple: sticker-purple oklch(0.76 0.11 290)
+  --sticker-blue: sticker-blue oklch(0.78 0.11 230)
+  --sticker-teal: sticker-teal oklch(0.78 0.10 190)
+  --sticker-red: sticker-red oklch(0.78 0.14 25)
+
+  --primary: oklch(0.55 0.15 var(--hue)) oklch(0.72 0.15 var(--hue))
+  --page-bg: oklch(0.905 0.05 var(--hue)) oklch(0.16 0.04 var(--hue))
+  --page-grid: #1414141a #e8edf314
+  --card-bg: oklch(0.995 0.01 var(--hue)) oklch(0.26 0.04 var(--hue))
+
+  --btn-content: oklch(0.45 0.12 var(--hue)) oklch(0.78 0.1 var(--hue))
+
+  --btn-regular-bg: oklch(0.88 0.07 var(--hue)) oklch(0.33 0.05 var(--hue))
+  --btn-regular-bg-hover: oklch(0.93 0.06 var(--hue)) oklch(0.38 0.05 var(--hue))
+  --btn-regular-bg-active: oklch(0.97 0.04 var(--hue)) oklch(0.43 0.05 var(--hue))
+
+  --btn-plain-bg-hover: oklch(0.90 0.06 var(--hue)) oklch(0.30 0.04 var(--hue))
+  --btn-plain-bg-active: oklch(0.95 0.04 var(--hue)) oklch(0.27 0.04 var(--hue))
+
+  --btn-card-bg-hover: oklch(0.96 0.03 var(--hue)) oklch(0.3 0.04 var(--hue))
+  --btn-card-bg-active: oklch(0.90 0.06 var(--hue)) oklch(0.35 0.05 var(--hue))
+
+  --enter-btn-bg: var(--btn-regular-bg)
+  --enter-btn-bg-hover: var(--btn-regular-bg-hover)
+  --enter-btn-bg-active: var(--btn-regular-bg-active)
+
+  --deep-text: oklch(0.30 0.06 var(--hue)) oklch(0.90 0.04 var(--hue))
+
+  --title-active: oklch(0.50 0.14 var(--hue))
+
+  --line-divider: #14141480 #e8edf380
+
+  --line-color: #14141480 #e8edf380
+  --meta-divider: #141414b3 #e8edf3b3
+
+  --inline-code-bg: var(--btn-regular-bg)
+  --inline-code-color: var(--btn-content)
+  --selection-bg: oklch(0.85 0.14 var(--hue)) oklch(0.40 0.12 var(--hue))
+  --codeblock-selection: oklch(0.40 0.12 var(--hue))
+  --codeblock-bg: oklch(0.17 0.02 var(--hue)) oklch(0.17 0.02 var(--hue))
+  --codeblock-topbar-bg: oklch(0.30 0.03 var(--hue)) oklch(0.12 0.02 var(--hue))
+
+  --license-block-bg: #1414140a var(--codeblock-bg)
+
+  --link-underline: oklch(0.86 0.12 var(--hue)) oklch(0.40 0.12 var(--hue))
+  --link-hover: oklch(0.90 0.08 var(--hue)) oklch(0.40 0.12 var(--hue))
+  --link-active: oklch(0.83 0.14 var(--hue)) oklch(0.35 0.11 var(--hue))
+
+  --float-panel-bg: white oklch(0.19 0.03 var(--hue))
+
+  --navbar-bg: oklch(0.80 0.12 45) oklch(0.22 0.05 45)
+  --navbar-fg: oklch(0.32 0.07 40) oklch(0.95 0.04 45)
+
+  /* deeper dedicated colors: nav buttons & stats rows share the orange (60) family, black text on top */
+  --nav-btn-bg: oklch(0.78 0.13 60) oklch(0.38 0.10 60)
+  --nav-btn-bg-hover: oklch(0.83 0.12 60) oklch(0.43 0.10 60)
+  --nav-btn-fg: oklch(0.15 0 0) oklch(0.95 0.03 60)
+
+  --stat-row-bg: oklch(0.80 0.13 60) oklch(0.34 0.09 60)
+  --stat-row-bg-hover: oklch(0.85 0.12 60) oklch(0.39 0.09 60)
+  --stat-row-fg: oklch(0.15 0 0) oklch(0.96 0.03 60)
+
+  --scrollbar-bg-light: #14141466
+  --scrollbar-bg-hover-light: #14141480
+  --scrollbar-bg-active-light: #14141499
+
+  --scrollbar-bg-dark: #e8edf366
+  --scrollbar-bg-hover-dark: #e8edf380
+  --scrollbar-bg-active-dark: #e8edf399
+
+  --scrollbar-bg: var(--scrollbar-bg-light) var(--scrollbar-bg-dark)
+  --scrollbar-bg-hover: var(--scrollbar-bg-hover-light) var(--scrollbar-bg-hover-dark)
+  --scrollbar-bg-active: var(--scrollbar-bg-active-light) var(--scrollbar-bg-active-dark)
+
+  --color-selection-bar: rainbow-light rainbow-dark
+
+  --display-light-icon: 1 0
+  --display-dark-icon: 0 1
+
+  --admonitions-color-tip: oklch(0.7 0.14 180) oklch(0.75 0.14 180)
+  --admonitions-color-note: oklch(0.7 0.14 var(--hue)) oklch(0.75 0.14 var(--hue))
+  --admonitions-color-important: oklch(0.7 0.14 310) oklch(0.75 0.14 310)
+  --admonitions-color-warning: oklch(0.7 0.14 60) oklch(0.75 0.14 60)
+  --admonitions-color-caution: oklch(0.6 0.2 25) oklch(0.65 0.2 25)
+
+  --toc-badge-bg: oklch(0.88 0.07 var(--hue)) var(--btn-regular-bg)
+  --toc-btn-hover: oklch(0.92 0.04 var(--hue)) oklch(0.22 0.03 var(--hue))
+  --toc-btn-active: oklch(0.88 0.05 var(--hue)) oklch(0.25 0.03 var(--hue))
+  --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem)
+  --toc-item-active: oklch(0.50 0.14 var(--hue)) oklch(0.42 0.12 var(--hue))
+})

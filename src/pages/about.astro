@@ -1,0 +1,148 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import avatar from "../assets/images/avatar.png";
+---
+
+<MainGridLayout title="关于我" description="关于 PeaceDove2008">
+    <div class="card-base no-lift p-8 md:p-10">
+
+        <h1 class="sticker-text font-bold text-3xl mb-8 flex items-center gap-3">
+            <span class="mini-badge w-12 h-12 p-0 justify-center rounded-lg">
+                <Icon name="fa6-solid:circle-user" class="text-2xl"></Icon>
+            </span>
+            关于我
+        </h1>
+
+        <!-- avatar + info -->
+        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start mb-8">
+            <img src={avatar.src} alt="PeaceDove2008 头像"
+                 class="w-44 h-44 rounded-2xl object-cover border-[3px] border-[var(--brutal-border)] shadow-[4px_4px_0_0_var(--brutal-shadow)] shrink-0" />
+            <div class="flex flex-col gap-4 text-center md:text-left w-full">
+                <div class="sticker-text font-bold text-3xl md:text-4xl">PeaceDove2008</div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                    <span class="mini-badge">
+                        <Icon name="fa6-solid:cake-candles" class="text-base"></Icon>
+                        2008-03-11
+                    </span>
+                    <span class="mini-badge">
+                        <Icon name="fa6-solid:earth-asia" class="text-base"></Icon>
+                        China
+                    </span>
+                    <span class="mini-badge">
+                        <Icon name="fa6-solid:location-dot" class="text-base"></Icon>
+                        JiLin
+                    </span>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                    {["AI画师", "全栈开发", "Agent", "Furry"].map((t, i) => (
+                        <span class="sticker h-8 px-3 text-sm"
+                              style={`rotate: ${[-4, 3, -2, 4][i % 4]}deg;`}>
+                            {t}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t-[3px] border-dashed border-[var(--brutal-border)]/30 mb-8"></div>
+
+        <!-- intro -->
+        <section class="mb-8">
+            <h2 class="sticker-text font-bold text-2xl mb-4 flex items-center gap-3">
+                <span class="mini-badge w-10 h-10 p-0 justify-center rounded-lg">
+                    <Icon name="fa6-solid:face-smile" class="text-xl"></Icon>
+                </span>
+                你好！
+            </h2>
+            <p class="leading-relaxed text-black/75 dark:text-white/75">
+                毛茸茸小动物爱好者，擅长 UI 设计、AI Agent 部署、全栈开发、AI 绘画相关、
+                游戏翻译与移植、逆向，重度 vibe coding，喜欢游戏、小动物、页面设计与 AI 相关。
+            </p>
+        </section>
+
+        <div class="border-t-[3px] border-dashed border-[var(--brutal-border)]/30 mb-8"></div>
+
+        <!-- skills -->
+        <section class="mb-8">
+            <h2 class="sticker-text font-bold text-2xl mb-5 flex items-center gap-3">
+                <span class="mini-badge w-10 h-10 p-0 justify-center rounded-lg">
+                    <Icon name="fa6-solid:screwdriver-wrench" class="text-xl"></Icon>
+                </span>
+                技术栈
+            </h2>
+            <div class="flex flex-col gap-3">
+                <div class="stat-row">
+                    <span class="stat-icon">
+                        <Icon name="fa6-solid:palette" class="text-lg"></Icon>
+                    </span>
+                    <div>
+                        <div class="stat-num !text-lg">AI 绘画</div>
+                        <div class="stat-label">Stable Diffusion / ComfyUI / 角色模型炼制 / 数据标注</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">
+                        <Icon name="fa6-solid:code" class="text-lg"></Icon>
+                    </span>
+                    <div>
+                        <div class="stat-num !text-lg">开发</div>
+                        <div class="stat-label leading-relaxed">
+                            Java SE / Spring Boot / MyBatis / Spring MVC
+                            <span class="mx-1 text-black/30 dark:text-white/30">/</span>
+                            MySQL / Redis / openGauss
+                            <span class="mx-1 text-black/30 dark:text-white/30">/</span>
+                            Vue / Element Plus / HTML / CSS / JavaScript / Nginx
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-icon">
+                        <Icon name="fa6-solid:robot" class="text-lg"></Icon>
+                    </span>
+                    <div>
+                        <div class="stat-num !text-lg">AI Agent</div>
+                        <div class="stat-label">Claude Code / opencode</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="border-t-[3px] border-dashed border-[var(--brutal-border)]/30 mb-8"></div>
+
+        <!-- find me -->
+        <section class="mb-8">
+            <h2 class="sticker-text font-bold text-2xl mb-5 flex items-center gap-3">
+                <span class="mini-badge w-10 h-10 p-0 justify-center rounded-lg">
+                    <Icon name="fa6-solid:link" class="text-xl"></Icon>
+                </span>
+                找到我
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://space.bilibili.com/675561534?spm_id_from=333.1007.0.0" target="_blank"
+                   class="sticker h-10 px-4 text-sm hover:-rotate-2">
+                    <Icon name="simple-icons:bilibili" class="mr-1.5"></Icon> Bilibili · 分享画作
+                </a>
+                <a href="https://github.com/PeaceDove2008" target="_blank"
+                   class="sticker h-10 px-4 text-sm hover:-rotate-2">
+                    <Icon name="fa6-brands:github" class="mr-1.5"></Icon> GitHub · 折腾代码
+                </a>
+                <a href="https://huggingface.co/" target="_blank"
+                   class="sticker h-10 px-4 text-sm hover:-rotate-2">
+                    <Icon name="fa6-solid:cloud" class="mr-1.5"></Icon> Hugging Face · 开源模型
+                </a>
+            </div>
+            <p class="mt-4 text-sm text-black/50 dark:text-white/50">
+                AI 绘画模型均开源在 Hugging Face 上，欢迎交流使用～
+            </p>
+        </section>
+
+        <!-- thanks -->
+        <div class="text-center pt-2">
+            <div class="sticker sticker-wiggle -rotate-2 inline-flex text-base px-6 h-11">
+                感谢你的阅读！🐾
+            </div>
+        </div>
+
+    </div>
+</MainGridLayout>

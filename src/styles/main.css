@@ -1,0 +1,305 @@
+@tailwind components;
+
+@layer components {
+    .card-base {
+        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition
+        border-[3px] border-[var(--brutal-border)] shadow-[4px_4px_0_0_var(--brutal-shadow)]
+        dark:shadow-[4px_4px_0_0_var(--brutal-shadow)]
+    }
+    /* sticker-lift: cards float up on hover.
+       Uses the `translate` property (not `transform`) because the onload
+       animation keeps its own `transform`, which would override transform.
+       `.no-lift` (navbar) opts out. */
+    :where(.card-base):not(#navbar, .no-lift):hover {
+        translate: -2px -2px;
+        box-shadow: 6px 6px 0 0 var(--brutal-shadow);
+    }
+
+    /* candy sticker, used by tags / badges */
+    .sticker {
+        @apply transition inline-flex items-center justify-center font-bold
+        bg-[var(--sticker-yellow)] text-[oklch(0.35_0.06_70)]
+        border-[2.5px] border-[var(--brutal-border)] rounded-lg
+        shadow-[2px_2px_0_0_var(--brutal-shadow)]
+        hover:-rotate-2 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_0_var(--brutal-shadow)]
+        active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+    }
+
+    /* sticker text: double candy text-shadow for important headings */
+    .sticker-text {
+        color: oklch(0.15 0 0);
+        text-shadow: 2px 2px 0 var(--sticker-orange), 4px 4px 0 var(--sticker-yellow);
+    }
+    .sticker-text:is(.dark *) {
+        color: oklch(0.96 0.02 85);
+        text-shadow: 2px 2px 0 oklch(0.40 0.10 35), 4px 4px 0 oklch(0.40 0.10 85);
+    }
+    a.sticker-text:hover {
+        text-shadow: 3px 3px 0 var(--sticker-orange), 6px 6px 0 var(--sticker-yellow);
+    }
+
+    /* tag badge on post cards: tilted sticker with hard shadow, same palette as tag bar */
+    .card-badge {
+        @apply inline-flex items-center shrink-0 font-bold text-sm px-3 h-9 rounded-lg
+        bg-[var(--sticker-yellow)] text-[oklch(0.35_0.06_70)]
+        border-[2.5px] border-[var(--brutal-border)]
+        shadow-[3px_3px_0_0_var(--brutal-shadow)] -rotate-6 transition-transform duration-300;
+    }
+
+    /* mini badges for word count / read time */
+    .mini-badge {
+        @apply inline-flex items-center gap-1 px-2.5 h-7 rounded-md font-medium
+        bg-[var(--btn-regular-bg)] text-[var(--btn-content)]
+        border-[2px] border-[var(--brutal-border)]
+        shadow-[1px_1px_0_0_var(--brutal-shadow)];
+    }
+
+    /* stats rows (shared by the sidebar stats widget and the sponsor page) */
+    .stat-row {
+        @apply flex items-center gap-3 px-3 py-2 rounded-lg
+        bg-[var(--stat-row-bg)] border-[2px] border-[var(--brutal-border)]
+        shadow-[2px_2px_0_0_var(--brutal-shadow)] transition
+        hover:bg-[var(--stat-row-bg-hover)];
+    }
+    .stat-row:hover {
+        translate: -1px -1px;
+        box-shadow: 3px 3px 0 0 var(--brutal-shadow);
+    }
+    .stat-num {
+        @apply text-2xl font-bold text-[var(--stat-row-fg)] leading-none;
+    }
+    .stat-label {
+        @apply text-sm text-[var(--stat-row-fg)] font-medium;
+    }
+    .stat-icon {
+        @apply inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0
+        bg-[var(--card-bg)] text-[var(--stat-row-fg)]
+        border-[2px] border-[var(--brutal-border)]
+        shadow-[1px_1px_0_0_var(--brutal-shadow)];
+    }
+
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(-6deg); }
+        25% { transform: rotate(-3deg); }
+        50% { transform: rotate(-8deg); }
+        75% { transform: rotate(-2deg); }
+    }
+
+    /* tinted cards: alternate candy backgrounds (light) / unified deep tint (dark) */
+    .card-base.tinted {
+        background-color: var(--card-tint, var(--card-bg));
+    }
+    .card-base.tinted:is(.dark *) {
+        background-color: oklch(0.24 0.04 var(--hue));
+    }
+
+    /* widget cards get their own candy tint */
+    widget-layout.card-base {
+        background-color: var(--widget-tint, var(--card-bg));
+    }
+    widget-layout.card-base:is(.dark *) {
+        background-color: var(--widget-tint-dark, var(--card-bg));
+    }
+
+    /* tag badge wobble on hover (kept out of any cascade layer on purpose) */
+    .card-badge:hover {
+        animation: wiggle 0.5s ease-in-out infinite;
+    }
+    h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
+        @apply transition;
+    }
+    .card-shadow {
+        @apply drop-shadow-[0_0_0_rgba(0,0,0,0.005)]
+    }
+    .expand-animation {
+        @apply relative before:ease-out before:transition active:bg-none hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)] z-0
+        before:absolute before:rounded-[inherit] before:inset-0 before:scale-[0.85] hover:before:scale-100 before:-z-10
+    }
+    .link {
+        @apply transition rounded-md p-1 -m-1 expand-animation;
+    }
+    .link-lg {
+        @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
+    }
+    .float-panel {
+        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition
+        border-[3px] border-[var(--brutal-border)] shadow-[4px_4px_0_0_var(--brutal-shadow)]
+        dark:shadow-[4px_4px_0_0_var(--brutal-shadow)]
+    }
+    .float-panel-closed {
+        @apply -translate-y-1 opacity-0 pointer-events-none
+    }
+    .search-panel mark {
+        @apply bg-transparent text-[var(--primary)]
+    }
+
+    .btn-card {
+        @apply transition flex items-center justify-center bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
+        active:bg-[var(--btn-card-bg-active)]
+        border-[3px] border-[var(--brutal-border)] shadow-[3px_3px_0_0_var(--brutal-shadow)]
+        dark:shadow-[3px_3px_0_0_var(--brutal-shadow)]
+        active:translate-x-[3px] active:translate-y-[3px] active:shadow-none
+    }
+    .btn-card.disabled {
+        @apply pointer-events-none text-black/10 dark:text-white/10
+    }
+    .btn-plain {
+        @apply transition relative flex items-center justify-center bg-none
+        text-black/75 hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
+        &:not(.scale-animation) {
+            @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+        }
+        &.scale-animation {
+            @apply expand-animation;
+            &.current-theme-btn {
+                @apply before:scale-100 before:opacity-100 before:bg-[var(--btn-plain-bg-hover)] text-[var(--primary)]
+            }
+        }
+    }
+    .btn-regular {
+        @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
+        text-[var(--btn-content)] dark:text-white/75
+        border-[3px] border-[var(--brutal-border)] shadow-[3px_3px_0_0_var(--brutal-shadow)]
+        dark:shadow-[3px_3px_0_0_var(--brutal-shadow)]
+        active:translate-x-[3px] active:translate-y-[3px] active:shadow-none
+    }
+
+    .link-underline {
+        @apply transition underline decoration-2 decoration-dashed decoration-[var(--link-underline)]
+        hover:decoration-[var(--link-hover)] active:decoration-[var(--link-active)] underline-offset-[0.25rem]
+    }
+
+    .toc-hide,
+    .toc-not-ready {
+        @apply opacity-0 pointer-events-none
+    }
+
+    #toc-inner-wrapper {
+        mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
+    }
+
+    .hide-scrollbar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .text-90 {
+        @apply text-black/90 dark:text-white/90
+    }
+    .text-75 {
+        @apply text-black/75 dark:text-white/75
+    }
+    .text-50 {
+        @apply text-black/50 dark:text-white/50
+    }
+    .text-30 {
+        @apply text-black/30 dark:text-white/30
+    }
+    .text-25 {
+        @apply text-black/25 dark:text-white/25
+    }
+
+    .meta-icon {
+        @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--card-bg)]
+        text-[var(--btn-content)] mr-2 border-[2px] border-[var(--brutal-border)]
+        shadow-[2px_2px_0_0_var(--brutal-shadow)]
+    }
+    .with-divider {
+        @apply before:content-['/'] before:ml-1.5 before:mr-1.5 before:text-[var(--meta-divider)] before:text-sm
+        before:font-medium before:first-of-type:hidden before:transition
+    }
+
+    .btn-regular-dark {
+        @apply flex items-center justify-center
+        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
+        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+    }
+    .btn-regular-dark.success {
+        @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
+    }
+}
+
+.custom-md img, #post-cover img {
+    @apply cursor-zoom-in
+}
+
+::selection {
+    background-color: var(--selection-bg)
+}
+
+.dash-line {
+    position: relative;
+}
+
+.dash-line::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    left: calc(50% - 1px);
+    border-left: 2px dashed var(--line-color);
+    pointer-events: none;
+    transition: all 0.3s;
+    transform: translateY(-50%);
+}
+
+.collapsed {
+    height: var(--collapsedHeight);
+}
+
+.custom-md spoiler {
+  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+
+  &:not(:hover) {
+    color: var(--codeblock-bg);
+    * {
+        color: var(--codeblock-bg);
+    }
+  }
+}
+
+/* sketchbook grid paper texture over the whole scrolling area.
+   Lives on <html>: the main grid is absolutely positioned, so <body> only
+   spans the viewport and its background would not cover the scroll area. */
+html {
+  background-color: var(--page-bg);
+  background-image:
+    linear-gradient(to right, var(--page-grid) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, var(--page-grid) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* background watermark: the author's tag, outlined hollow text */
+.bg-decor-text {
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(20, 20, 20, 0.13);
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+.dark .bg-decor-text {
+  -webkit-text-stroke-color: rgba(232, 237, 243, 0.1);
+}
+@media (max-width: 767px) {
+  .bg-decor-text {
+    -webkit-text-stroke-width: 1.5px;
+  }
+}
+
+/* smooth hover lift for cards (translate is animation-proof) */
+:where(.card-base):not(#navbar, .no-lift) {
+  transition: translate 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* left-right wobble for tags in the tag bar */
+@keyframes wiggle-lr {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+.sticker-wiggle:hover {
+  animation: wiggle-lr 0.45s ease-in-out infinite;
+}

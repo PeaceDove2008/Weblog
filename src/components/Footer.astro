@@ -1,0 +1,32 @@
+---
+
+import { Icon } from "astro-icon/components";
+import { profileConfig } from "../config";
+import { url } from "../utils/url-utils";
+
+const currentYear = new Date().getFullYear();
+---
+
+<!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">-->
+<div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-32"></div>
+<div class="transition card-base p-6 mb-12 flex flex-col items-center justify-center px-6">
+    <div class="sticker sticker-wiggle -rotate-2 mb-5 text-base px-5 h-11">Thanks for reading!</div>
+    <div class="transition mb-4 flex flex-wrap items-center justify-center gap-2">
+        <span class="mini-badge !text-xs !h-6 !px-2.5">
+            <Icon name="fa6-brands:creative-commons" class="text-sm"></Icon>
+        </span>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+           class="transition link text-xs font-medium text-[var(--primary)]">
+            本站采用 CC BY-NC-SA 4.0 国际协议进行许可
+        </a>
+    </div>
+    <div class="transition text-50 text-sm text-center">
+        &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. All Rights Reserved. /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
+        Powered by
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+    </div>
+</div>
+</div>

@@ -1,0 +1,13 @@
+---
+interface Props {
+	size?: string;
+	dot?: boolean;
+	href?: string;
+	label?: string;
+}
+const { dot, href, label }: Props = Astro.props;
+---
+<a href={href} aria-label={label} class="sticker h-8 text-sm px-3">
+    {dot && <div class="h-1.5 w-1.5 bg-[oklch(0.35_0.06_70)] dark:bg-[oklch(0.35_0.06_70)] transition rounded-md mr-2"></div>}
+    <slot></slot>
+</a>

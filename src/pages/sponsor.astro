@@ -1,0 +1,69 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<MainGridLayout title="赞助" description="赞助支持">
+    <div class="card-base no-lift p-8 md:p-10">
+        <div class="flex items-center gap-4 mb-6">
+            <span class="mini-badge w-12 h-12 p-0 justify-center rounded-lg">
+                <Icon name="fa6-solid:hand-holding-heart" class="text-2xl"></Icon>
+            </span>
+            <h1 class="sticker-text font-bold text-3xl">赞助支持</h1>
+        </div>
+
+        <p class="text-black/70 dark:text-white/70 mb-6 leading-relaxed">
+            如果你喜欢这个小窝，欢迎赞助支持！你的每一份支持都是我继续创作与分享的动力。
+        </p>
+
+        <!-- 赞助方式 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="stat-row">
+                <span class="stat-icon">
+                    <Icon name="simple-icons:alipay" class="text-xl"></Icon>
+                </span>
+                <div>
+                    <div class="stat-num !text-lg">支付宝</div>
+                    <div class="stat-label">扫码赞助 · 二维码待添加</div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <span class="stat-icon">
+                    <Icon name="simple-icons:wechat" class="text-xl"></Icon>
+                </span>
+                <div>
+                    <div class="stat-num !text-lg">微信支付</div>
+                    <div class="stat-label">扫码赞助 · 二维码待添加</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 二维码占位 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="card-base p-6 flex flex-col items-center gap-3">
+                <div class="w-40 h-40 rounded-xl border-[2.5px] border-[var(--brutal-border)] shadow-[2px_2px_0_0_var(--brutal-shadow)] bg-[var(--btn-regular-bg)] flex items-center justify-center">
+                    <span class="text-[var(--btn-content)] font-bold">支付宝二维码</span>
+                </div>
+                <span class="text-sm text-black/50 dark:text-white/50">（占位 · 待添加）</span>
+            </div>
+            <div class="card-base p-6 flex flex-col items-center gap-3">
+                <div class="w-40 h-40 rounded-xl border-[2.5px] border-[var(--brutal-border)] shadow-[2px_2px_0_0_var(--brutal-shadow)] bg-[var(--btn-regular-bg)] flex items-center justify-center">
+                    <span class="text-[var(--btn-content)] font-bold">微信二维码</span>
+                </div>
+                <span class="text-sm text-black/50 dark:text-white/50">（占位 · 待添加）</span>
+            </div>
+        </div>
+
+        <!-- 赞助协议占位 -->
+        <div class="card-base p-6">
+            <div class="flex items-center gap-2 mb-4">
+                <Icon name="fa6-solid:scale-balanced" class="text-xl text-[var(--primary)]"></Icon>
+                <h2 class="font-bold text-xl">赞助协议</h2>
+            </div>
+            <p class="text-sm text-black/50 dark:text-white/50 leading-relaxed">
+                赞助协议条款内容待添加：将包含自愿赞助声明、赞助用途说明、
+                以及关于退款与捐赠性质的条款说明。
+            </p>
+        </div>
+    </div>
+</MainGridLayout>

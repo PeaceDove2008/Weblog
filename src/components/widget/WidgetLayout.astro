@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "../../i18n/i18nKey";
+import { i18n } from "../../i18n/translation";
+
+interface Props {
+	id: string;
+	name?: string;
+	isCollapsed?: boolean;
+	collapsedHeight?: string;
+	class?: string;
+	style?: string;
+	tint?: string;
+	tintDark?: string;
+	icon?: string;
+}
+const { id, name, isCollapsed, collapsedHeight, style, tint, tintDark, icon } = Astro.props;
+const className = Astro.props.class;
+
+const tintStyle = tint
+	? `; --widget-tint: ${tint}; --widget-tint-dark: ${tintDark ?? "oklch(0.24 0.04 var(--hue))"};`
+	: "";
+const finalStyle = (style ? style : "") + tintStyle;
+---
+<widget-layout data-id={id} data-is-collapsed={String(isCollapsed)} class={"pb-4 card-base !overflow-visible " + (className ?? "")} style={finalStyle}>
+    <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-4 mt-4 mb-2 flex items-center gap-2.5">
+        {icon && <span class="mini-badge w-8 h-8 p-0 justify-center shrink-0">
+            <Icon name={icon} class="text-base"></Icon>
+        </span>}
+        {name}
+    </div>
+    <div id={id} class:list={["collapse-wrapper px-4", {"overflow-hidden collapsed": isCollapsed}]}>
+        <slot></slot>
+    </div>
+    {isCollapsed && <div class="expand-btn px-4 -mb-2">
+        <button class="btn-plain rounded-lg w-full h-9">
+            <div class="text-[var(--primary)] flex items-center justify-center gap-2 -translate-x-2">
+                <Icon name="material-symbols:more-horiz" class="text-[1.75rem]"></Icon> {i18n(I18nKey.more)}
+            </div>
+        </button>
+    </div>}
+</widget-layout>
+
+<style define:vars={{ collapsedHeight }}>
+    .collapsed {
+        height: var(--collapsedHeight);
+    }
+</style>
+
+<script>
+    class WidgetLayout extends HTMLElement {
+        constructor() {
+            super();
+
+            if (this.dataset.isCollapsed !== "true")
+                return;
+
+            const id = this.dataset.id;
+            const btn = this.querySelector('.expand-btn');
+            const wrapper = this.querySelector(`#${id}`)
+            btn!.addEventListener('click', () => {
+                wrapper!.classList.remove('collapsed');
+                btn!.classList.add('hidden');
+            })
+        }
+    }
+
+    if (!customElements.get("widget-layout")) {
+        customElements.define("widget-layout", WidgetLayout);
+    }
+</script>

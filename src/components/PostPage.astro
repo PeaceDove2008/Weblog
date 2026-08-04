@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getPostUrlBySlug } from "@utils/url-utils";
+import PostCard from "./PostCard.astro";
+
+const { page } = Astro.props;
+
+let delay = 0;
+const interval = 50;
+
+const candyTints = [
+	"oklch(0.93 0.10 85)",
+	"oklch(0.92 0.10 55)",
+	"oklch(0.92 0.10 35)",
+	"oklch(0.93 0.09 100)",
+	"oklch(0.92 0.10 70)",
+	"oklch(0.91 0.10 45)",
+];
+---
+<div class="transition flex flex-col rounded-[var(--radius-large)] bg-transparent gap-5 mb-6 pt-2">
+    {page.data.map((entry: CollectionEntry<"posts">, index) => (
+        <PostCard
+                entry={entry}
+                title={entry.data.title}
+                tags={entry.data.tags}
+                category={entry.data.category}
+                published={entry.data.published}
+                updated={entry.data.updated}
+                url={getPostUrlBySlug(entry.slug)}
+                image={entry.data.image}
+                description={entry.data.description}
+                draft={entry.data.draft}
+                class:list="onload-animation"
+                style={`--card-tint: ${candyTints[index % candyTints.length]}; animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
+        ></PostCard>
+    ))}
+</div>

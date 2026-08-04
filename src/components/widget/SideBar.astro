@@ -1,0 +1,31 @@
+---
+import type { MarkdownHeading } from "astro";
+import AiShowcase from "./AiShowcase.svelte";
+import Profile from "./Profile.astro";
+import Stats from "./Stats.astro";
+import Tag from "./Tags.astro";
+
+interface Props {
+	class?: string;
+	headings?: MarkdownHeading[];
+}
+
+const className = Astro.props.class;
+---
+<div id="sidebar" class:list={[className, "w-full"]}>
+    <div class="flex flex-col w-full gap-6 mb-6">
+        <Profile></Profile>
+    </div>
+    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-6 top-6 sticky top-6">
+        <Stats class="onload-animation" style="animation-delay: 150ms"></Stats>
+        <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
+        <AiShowcase client:load
+                    images={["/ai-art/pic1.png", "/ai-art/pic2.png", "/ai-art/pic3.png", "/ai-art/pic4.png", "/ai-art/pic5.png", "/ai-art/pic6.png"]}
+                    captions={[
+                        "欢迎来到毛茸茸小窝 🐾",
+                        "这里是用 AI 画的小动物们 ✨",
+                        "喜欢的话常来逛逛吧～",
+                    ]}
+        ></AiShowcase>
+    </div>
+</div>
