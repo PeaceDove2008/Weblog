@@ -29,3 +29,15 @@ yarn.lock
 # ide
 .idea
 *.iml
+
+# debug artifacts
+*.log
+page*.html
+home*.html
+post*.html
+postpage.html
+*.js.bak
+vars.js
+maincss.js
+layout-script.js
+about2*.html
