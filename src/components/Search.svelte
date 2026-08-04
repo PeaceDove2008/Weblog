@@ -154,7 +154,7 @@ $: if (initialized && keywordMobile) {
 
 <!-- toggle btn for phone/tablet view -->
 <button on:click={togglePanel} aria-label="Search Panel" id="search-switch"
-        class="btn-plain scale-animation lg:!hidden rounded-lg w-11 h-11 active:scale-90 hover:-rotate-2 border-[2px] border-[var(--brutal-border)]">
+        class="btn-plain scale-animation lg:!hidden rounded-lg w-10 h-10 sm:w-11 sm:h-11 active:scale-90 hover:-rotate-2 border-[2px] border-[var(--brutal-border)]">
     <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
 </button>
 
