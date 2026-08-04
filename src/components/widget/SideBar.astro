@@ -10,10 +10,10 @@ const hideMobile: boolean = Astro.props.hideMobile === true;
 ---
 
 <div id="sidebar" class:list={[className, "w-full", { "hidden lg:block": hideMobile }]}>
-    <div class="flex flex-col w-full gap-6 mb-6">
+    <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
     </div>
-    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-6 top-6 sticky top-6">
+    <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4">
         <Stats class="onload-animation" style="animation-delay: 150ms"></Stats>
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
         <AiShowcase client:load

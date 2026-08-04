@@ -7,7 +7,7 @@ import ImageWrapper from "../misc/ImageWrapper.astro";
 const config = profileConfig;
 const className: string = Astro.props.class ?? "";
 ---
-<div class:list={[className, "card-base tinted p-3 relative !overflow-visible"]} style="--card-tint: oklch(0.94 0.08 90)">
+<div class:list={[className, "card-base tinted p-2 lg:p-3 relative !overflow-visible"]} style="--card-tint: oklch(0.94 0.08 90)">
     <div class="sticker absolute -top-3 -right-2 rotate-6 text-xs px-2.5 h-7 z-10">Hi!</div>
     <a aria-label="Go to About Page" href={url('/about/')}
        class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3

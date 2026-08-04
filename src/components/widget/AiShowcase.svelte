@@ -18,7 +18,7 @@
 	}, 5000);
 </script>
 
-<div class="card-base tinted !overflow-visible p-3" style="--card-tint: oklch(0.93 0.08 55)">
+<div class="card-base tinted !overflow-visible p-2 lg:p-3" style="--card-tint: oklch(0.93 0.08 55)">
 	<div class="relative rounded-xl overflow-hidden border-[2.5px] border-[var(--brutal-border)] shadow-[2px_2px_0_0_var(--brutal-shadow)]
 		w-full max-w-[18rem] lg:max-w-none mx-auto">
 		{#if images.length > 0}
