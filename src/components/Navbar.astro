@@ -24,7 +24,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--navbar-bg)] transition"></div> <!-- used for onload animation -->
     <div class:list={[
         className,
-        "card-base no-lift !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-2 sm:px-4 bg-[var(--navbar-bg)]"]}
+        "card-base no-lift !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-none lg:!rounded-t-none mx-auto flex items-center justify-between px-2 sm:px-4 bg-[var(--navbar-bg)]"]}
          style="background-color: var(--navbar-bg)">
         <a href={url('/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-2 sm:px-5 font-bold active:scale-95 hover:-rotate-2
             border-[2px] border-[var(--brutal-border)] bg-[var(--nav-btn-bg)] hover:bg-[var(--nav-btn-bg-hover)]
