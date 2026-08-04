@@ -43,13 +43,13 @@ const coverWidth = "28%";
 const { remarkPluginFrontmatter } = await entry.render();
 ---
 <div class:list={["card-base tinted flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
-    <div class:list={["pl-4 sm:pl-6 md:pl-9 pr-4 sm:pr-6 md:pr-2 pt-4 sm:pt-6 md:pt-7 pb-4 sm:pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
+    <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
         <div class="flex items-start justify-between gap-3">
             <a href={url}
-               class="sticker-text transition group w-full block font-bold mb-2 sm:mb-3 text-2xl sm:text-3xl
+               class="sticker-text transition group w-full block font-bold mb-3 text-3xl
             hover:opacity-90 active:opacity-75
             before:w-1.5 before:h-6 before:rounded-sm before:bg-[var(--sticker-orange)]
-            before:absolute before:top-[30px] before:left-[14px] before:rotate-3 before:hidden md:before:block
+            before:absolute before:top-[32px] before:left-[18px] before:rotate-3 before:hidden md:before:block
             ">
                 {title}
                 <Icon class="inline text-[2rem] text-[var(--sticker-yellow)] md:hidden translate-y-0.5 absolute" name="material-symbols:chevron-right-rounded" ></Icon>

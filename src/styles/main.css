@@ -56,9 +56,9 @@
 
     /* stats rows (shared by the sidebar stats widget and the sponsor page) */
     .stat-row {
-        @apply flex items-center gap-1.5 lg:gap-3 px-1.5 lg:px-3 py-1 lg:py-2 rounded-lg
-        bg-[var(--stat-row-bg)] border-2 lg:border-[2px] border-[var(--brutal-border)]
-        shadow-[1px_1px_0_0_var(--brutal-shadow)] lg:shadow-[2px_2px_0_0_var(--brutal-shadow)] transition
+        @apply flex items-center gap-3 px-3 py-2 rounded-lg
+        bg-[var(--stat-row-bg)] border-[2px] border-[var(--brutal-border)]
+        shadow-[2px_2px_0_0_var(--brutal-shadow)] transition
         hover:bg-[var(--stat-row-bg-hover)];
     }
     .stat-row:hover {
@@ -66,15 +66,15 @@
         box-shadow: 3px 3px 0 0 var(--brutal-shadow);
     }
     .stat-num {
-        @apply text-sm lg:text-2xl font-bold text-[var(--stat-row-fg)] leading-none;
+        @apply text-2xl font-bold text-[var(--stat-row-fg)] leading-none;
     }
     .stat-label {
-        @apply text-[0.6rem] lg:text-sm text-[var(--stat-row-fg)] font-medium leading-tight;
+        @apply text-sm text-[var(--stat-row-fg)] font-medium;
     }
     .stat-icon {
-        @apply inline-flex items-center justify-center w-5 h-5 lg:w-9 lg:h-9 rounded-md shrink-0
+        @apply inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0
         bg-[var(--card-bg)] text-[var(--stat-row-fg)]
-        border-2 border-[var(--brutal-border)]
+        border-[2px] border-[var(--brutal-border)]
         shadow-[1px_1px_0_0_var(--brutal-shadow)];
     }
 
