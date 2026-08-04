@@ -23,9 +23,9 @@ const tintStyle = tint
 const finalStyle = (style ? style : "") + tintStyle;
 ---
 <widget-layout data-id={id} data-is-collapsed={String(isCollapsed)} class={"pb-4 card-base !overflow-visible " + (className ?? "")} style={finalStyle}>
-    <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 relative ml-4 mt-4 mb-2 flex items-center gap-2.5">
-        {icon && <span class="mini-badge w-8 h-8 p-0 justify-center shrink-0">
-            <Icon name={icon} class="text-base"></Icon>
+    <div class="font-bold transition text-xl text-neutral-900 dark:text-neutral-100 relative ml-5 mt-5 mb-3 flex items-center gap-3">
+        {icon && <span class="mini-badge w-10 h-10 p-0 justify-center shrink-0">
+            <Icon name={icon} class="text-lg"></Icon>
         </span>}
         {name}
     </div>
