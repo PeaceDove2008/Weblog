@@ -1,20 +1,15 @@
+---
 import type { MarkdownHeading } from "astro";
 import AiShowcase from "./AiShowcase.svelte";
 import Profile from "./Profile.astro";
 import Stats from "./Stats.astro";
 import Tag from "./Tags.astro";
 
-interface Props {
-	class?: string;
-	headings?: MarkdownHeading[];
-	hideMobile?: boolean;
-}
-
-const className = Astro.props.class;
-const hideMobile = Astro.props.hideMobile ?? false;
+const className: string = Astro.props.class ?? "";
+const hideMobile: boolean = Astro.props.hideMobile === true;
 ---
+
 <div id="sidebar" class:list={[className, "w-full", { "hidden lg:block": hideMobile }]}>
-    <!-- mobile: the three cards in a row at the very top -->
     <div class="flex flex-row items-stretch gap-2 mb-3 lg:hidden">
         <Profile class="flex-1 min-w-0"></Profile>
         <Stats class="flex-1 min-w-0"></Stats>
@@ -28,7 +23,6 @@ const hideMobile = Astro.props.hideMobile ?? false;
         ></AiShowcase>
     </div>
 
-    <!-- desktop: original stacked sidebar -->
     <div class="hidden lg:flex flex-col w-full gap-6 mb-6">
         <Profile></Profile>
     </div>
