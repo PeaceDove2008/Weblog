@@ -48,15 +48,15 @@
 
     /* mini badges for word count / read time */
     .mini-badge {
-        @apply inline-flex items-center gap-1.5 px-3 h-9 rounded-md font-medium
+        @apply inline-flex items-center gap-1 px-2.5 h-7 rounded-md font-medium
         bg-[var(--btn-regular-bg)] text-[var(--btn-content)]
         border-[2px] border-[var(--brutal-border)]
-        shadow-[1px_1px_0_0_var(--brutal-shadow)] text-base;
+        shadow-[1px_1px_0_0_var(--brutal-shadow)];
     }
 
     /* stats rows (shared by the sidebar stats widget and the sponsor page) */
     .stat-row {
-        @apply flex items-center gap-3 px-4 py-3 rounded-lg
+        @apply flex items-center gap-3 px-3 py-2 rounded-lg
         bg-[var(--stat-row-bg)] border-[2px] border-[var(--brutal-border)]
         shadow-[2px_2px_0_0_var(--brutal-shadow)] transition
         hover:bg-[var(--stat-row-bg-hover)];
@@ -66,13 +66,13 @@
         box-shadow: 3px 3px 0 0 var(--brutal-shadow);
     }
     .stat-num {
-        @apply text-3xl font-bold text-[var(--stat-row-fg)] leading-none;
+        @apply text-2xl font-bold text-[var(--stat-row-fg)] leading-none;
     }
     .stat-label {
-        @apply text-base text-[var(--stat-row-fg)] font-medium;
+        @apply text-sm text-[var(--stat-row-fg)] font-medium;
     }
     .stat-icon {
-        @apply inline-flex items-center justify-center w-11 h-11 rounded-md shrink-0
+        @apply inline-flex items-center justify-center w-9 h-9 rounded-md shrink-0
         bg-[var(--card-bg)] text-[var(--stat-row-fg)]
         border-[2px] border-[var(--brutal-border)]
         shadow-[1px_1px_0_0_var(--brutal-shadow)];
@@ -203,7 +203,7 @@
     }
 
     .meta-icon {
-        @apply w-10 h-10 transition rounded-md flex items-center justify-center bg-[var(--card-bg)]
+        @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--card-bg)]
         text-[var(--btn-content)] mr-2 border-[2px] border-[var(--brutal-border)]
         shadow-[2px_2px_0_0_var(--brutal-shadow)]
     }
